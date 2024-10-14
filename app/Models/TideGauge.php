@@ -9,6 +9,7 @@ class TideGauge extends Model
 {
     use HasFactory;
 
+    protected $table = 'tidegauges';
     protected $fillable = [
         '_serial',
         '_country',

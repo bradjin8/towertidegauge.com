@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/tidegauge', [\App\Http\Controllers\API\TideGaugeController::class, 'index']);
+Route::get('/tidegauge/{id}', [\App\Http\Controllers\API\TideGaugeController::class, 'show']);
