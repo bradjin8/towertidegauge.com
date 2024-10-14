@@ -19,7 +19,7 @@ function initMap() {
     for (let i = 0; i < locations.length; i++) {
         const data = locations[i];
         let siteLink =
-            "<a href=\"tidegauge.html?_serial=" +
+            "<a href=\"tidegauge?_serial=" +
             data._serial +
             "\">" +
             data._loc +
@@ -29,7 +29,7 @@ function initMap() {
 
         dropdown = dropdown.concat(siteLink)
 
-        const link = '<div id="siteLink" onclick=window.location.href="tidegauge.html?_serial=' + data._serial + '">' + data._loc.toUpperCase() + '</div>'
+        const link = '<div id="siteLink" onclick=window.location.href="tidegauge?_serial=' + data._serial + '">' + data._loc.toUpperCase() + '</div>'
         const contentString =
             '<head><link rel="stylesheet" href="index.css"/>' +
             '<body>' +
