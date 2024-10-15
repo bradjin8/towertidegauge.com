@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::table('user', function (Blueprint $table) {
             //
-            $table->string('company_name')->nullable();
-            $table->string('phone_number')->nullable();
+            $table->boolean('is_admin');
         });
     }
 
