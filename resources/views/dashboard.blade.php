@@ -33,7 +33,7 @@
                                 <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Total Tide Gauges</h4>
                                 <p class="mt-2 text-4xl font-bold text-blue-600 dark:text-blue-400">{{ $data['tideGauges'] }}</p>
                             </div>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFGE_-4gWrkmnXuN8BHFrdWFiP5cCRGbwLWA&s" alt="Tide Gauges Icon" class="w-10 h-10 opacity-75 dark:invert">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY5LwgmDWPzizXdfd7J6dcVEP9-XnoJLFwxKZIW-MoZcgSTiXd0qmT_PSb_k6NTslXrm0&usqp=CAU" alt="Tide Gauges Icon" class="w-10 h-10 opacity-75 dark:invert">
                         </div>
                     </div>
                 @else
