@@ -1,9 +1,4 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Add User') }}
-        </h2>
-    </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
 
@@ -17,89 +12,94 @@
                 </div>
             @endif
 
-            <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg">
+            <div class="max-w-lg mx-auto bg-gray-300 dark:bg-gray-800 p-8 rounded-lg shadow-lg">
                 <form action="{{ route('users.store') }}" method="POST">
                     @csrf
 
                     <!-- Name Field -->
                     <div class="mb-4">
-                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                        <label for="name"
+                               class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
                         <input
                             type="text"
                             name="name"
                             id="name"
                             value="{{ old('name') }}"
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Enter user name" required>
                     </div>
 
                     <!-- Email Field -->
                     <div class="mb-4">
-                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <label for="email"
+                               class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
                         <input
                             type="email"
                             name="email"
                             id="email"
                             value="{{ old('email') }}"
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Enter user email" required>
                     </div>
 
                     <!-- Phone Number Field -->
                     <div class="mb-4">
-                        <label for="phone_number" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <label for="phone_number" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Phone
+                            Number</label>
                         <input
                             type="tel"
                             name="phone_number"
                             id="phone_number"
                             value="{{ old('phone_number') }}"
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Enter user phone number">
                     </div>
 
-
-                    <!-- Phone Number Field -->
+                    <!-- Company Name Field -->
                     <div class="mb-4">
-                        <label for="company_name" class="block text-sm font-medium text-gray-700">Company Name</label>
+                        <label for="company_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Company
+                            Name</label>
                         <input
                             type="text"
                             name="company_name"
                             id="company_name"
                             value="{{ old('company_name') }}"
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Enter user company name">
                     </div>
 
                     <!-- Password Field -->
                     <div class="mb-4">
-                        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                        <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
                         <input
                             type="password"
                             name="password"
                             id="password"
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Enter password" required>
                     </div>
 
                     <!-- Confirm Password Field -->
                     <div class="mb-4">
-                        <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm
+                        <label for="password_confirmation"
+                               class="block text-sm font-medium text-gray-700 dark:text-gray-300">Confirm
                             Password</label>
                         <input
                             type="password"
                             name="password_confirmation"
                             id="password_confirmation"
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Confirm password" required>
                     </div>
 
                     <!-- Admin Role Selector -->
                     <div class="mb-4">
-                        <label for="is_admin" class="block text-sm font-medium text-gray-700">Role</label>
+                        <label for="is_admin"
+                               class="block text-sm font-medium text-gray-700 dark:text-gray-300">Role</label>
                         <select
                             name="is_admin"
                             id="is_admin"
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
                             required>
                             <option value="0" {{ old('is_admin') == '0' ? 'selected' : '' }}>User</option>
                             <option value="1" {{ old('is_admin') == '1' ? 'selected' : '' }}>Admin</option>
@@ -115,6 +115,7 @@
                     </div>
                 </form>
             </div>
+
         </div>
     </div>
 </x-app-layout>

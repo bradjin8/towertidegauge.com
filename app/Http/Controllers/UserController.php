@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TideGauge;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -15,7 +16,7 @@ class UserController extends Controller
     {
         //
         $users = User::all();
-        return view('users.index', compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -24,7 +25,7 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('users.create');
+        return view('admin.users.create');
     }
 
     /**
@@ -68,9 +69,9 @@ class UserController extends Controller
         //
         $user = User::find($id);
         if (!$user) {
-            return redirect()->route('users.index')->with('error', 'User not found');
+            return redirect()->route('admin.users.index')->with('error', 'User not found');
         }
-        return view('users.edit', compact('user'));
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -121,5 +122,32 @@ class UserController extends Controller
         }
         $user->delete();
         return redirect()->route('users.index')->with('success', 'User deleted successfully');
+    }
+
+    /**
+     * Display the form to assign tide gauges to a user.
+     */
+    public function assignTideGaugesPage()
+    {
+        $users = User::where('is_admin', false)->get();
+        $tideGauges = TideGauge::all();
+        return view('admin.assign-tidegauges', compact('users', 'tideGauges'));
+    }
+
+    /**
+     * Store the tide gauge assignment.
+     */
+    public function storeTideGaugesAssignment(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'tide_gauges' => 'array',
+            'tide_gauges.*' => 'exists:tidegauges,id',
+        ]);
+
+        $user = User::find($request->user_id);
+        $user->tideGauges()->sync($request->tide_gauges);
+
+        return redirect()->route('assign.tidegauges')->with('success', 'Tide Gauges assigned successfully.');
     }
 }

@@ -1,10 +1,4 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Users') }}
-        </h2>
-    </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
             @if(session('success'))
@@ -18,16 +12,16 @@
                 </div>
             @endif
 
-            <div class="flex justify-end mb-4">
+            <div class="flex justify-start mb-4">
                 <a href="{{ route('users.create') }}"
                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Add User
                 </a>
             </div>
 
-            <table class="w-full table-auto">
+            <table class="w-full table-auto text-gray-800 dark:text-white bg-gray-300 dark:bg-gray-800">
                 <thead>
-                <tr class="text-gray-300 uppercase text-sm leading-normal">
+                <tr class="text-gray-950 dark:text-gray-100 uppercase text-sm leading-normal">
                     <th class="py-2 px-2 text-left">Name</th>
                     <th class="py-2 px-2 text-left">Email</th>
                     <th class="py-2 px-2 text-left">Phone</th>
@@ -35,9 +29,9 @@
                     <th class="py-2 px-2 text-center">Actions</th>
                 </tr>
                 </thead>
-                <tbody class="text-white text-sm font-light">
+                <tbody class="text-sm font-light">
                 @foreach($users as $user)
-                    <tr class="hover:bg-gray-700">
+                    <tr class="hover:bg-gray-400 dark:hover:bg-gray-500">
                         <td class="py-2 px-2 text-left">
                             <div class="flex items-center gap-4">
                                 <div class="mr-2">

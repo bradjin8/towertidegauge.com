@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TideGaugeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,19 +19,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 Route::get('/tidegauge', function () {
     return view('tidegauge');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/tidegauges', [TideGaugeController::class, 'index'])->name('tidegauges.index');
+    Route::get('/tidegauges/create', [TideGaugeController::class, 'create'])->middleware('admin')->name('tidegauges.create');
+    Route::post('/tidegauges', [TideGaugeController::class, 'store'])->middleware('admin')->name('tidegauges.store');
+    Route::get('/tidegauges/{id}/edit', [TideGaugeController::class, 'edit'])->name('tidegauges.edit');
+    Route::put('/tidegauges/{id}', [TideGaugeController::class, 'update'])->name('tidegauges.update');
+    Route::delete('/tidegauges/{id}', [TideGaugeController::class, 'destroy'])->middleware('admin')->name('tidegauges.destroy');
 });
 
 Route::middleware('admin')->group(function () {
@@ -39,6 +46,9 @@ Route::middleware('admin')->group(function () {
     Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
     Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
     Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+    Route::get('/assign-tidegauges', [UserController::class, 'assignTideGaugesPage'])->name('assign.tidegauges');
+    Route::post('/assign-tidegauges', [UserController::class, 'storeTideGaugesAssignment'])->name('store.tidegauges');
 });
 
 
