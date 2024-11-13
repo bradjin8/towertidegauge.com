@@ -67,7 +67,7 @@ function initMap() {
 
 function getTideGauges() {
     const ajax = new XMLHttpRequest();
-    ajax.open("GET", "/api/tidegauge", true);
+    ajax.open("GET", "./api/tidegauge", true);
     ajax.send();
 
     ajax.onreadystatechange = function () {

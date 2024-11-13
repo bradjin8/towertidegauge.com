@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("TideTable").style.display = "none";
     setTimeout(function () { window.location.reload(true); }, 600000);
     sn = location.search.substring(9);
-    recordedTidesAddress = "/api/tidesBySerial/".concat(sn);
+    recordedTidesAddress = "./api/tidesBySerial/".concat(sn);
     GetTideGaugeData();
 });
 
