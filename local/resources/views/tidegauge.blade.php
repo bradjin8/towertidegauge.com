@@ -14,7 +14,7 @@
         <label onclick="BuildTextFile()" class="CurrentLocation" id="CurrentLocation"></label>
     </div>
     <div class="header-right">
-        <a href="/"><img src="{{asset('img/tower.png')}}" height=35></a>
+        <a href="{{url('')}}"><img src="{{asset('img/tower.png')}}" height=35></a>
     </div>
 </div>
 <!--
