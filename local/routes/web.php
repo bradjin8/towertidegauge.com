@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/tidegauges/create', [TideGaugeController::class, 'create'])->middleware('admin')->name('tidegauges.create');
     Route::post('/tidegauges', [TideGaugeController::class, 'store'])->middleware('admin')->name('tidegauges.store');
     Route::get('/tidegauges/{id}/edit', [TideGaugeController::class, 'edit'])->name('tidegauges.edit');
+    Route::get('/tidegauges/{id}/view', [TideGaugeController::class, 'view'])->name('tidegauges.view');
     Route::put('/tidegauges/{id}', [TideGaugeController::class, 'update'])->name('tidegauges.update');
     Route::delete('/tidegauges/{id}', [TideGaugeController::class, 'destroy'])->middleware('admin')->name('tidegauges.destroy');
 });

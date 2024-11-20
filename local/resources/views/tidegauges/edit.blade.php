@@ -67,55 +67,6 @@
                         required>
                 </div>
 
-                <!-- Date Field -->
-                <div class="mb-4">
-                    <label for="_date" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Date</label>
-                    <input
-                        type="date"
-                        name="_date"
-                        id="_date"
-                        value="{{ old('_date', $tideGauge->_date) }}"
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                        required>
-                </div>
-
-                <!-- Time Field -->
-                <div class="mb-4">
-                    <label for="_time" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Time</label>
-                    <input
-                        type="time"
-                        name="_time"
-                        id="_time"
-                        value="{{ old('_time', $tideGauge->_time) }}"
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                        required>
-                </div>
-
-                <!-- Tide Field -->
-                <div class="mb-4">
-                    <label for="_tide" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Tide</label>
-                    <input
-                        type="number"
-                        step="0.01"
-                        name="_tide"
-                        id="_tide"
-                        value="{{ old('_tide', $tideGauge->_tide) }}"
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                        required>
-                </div>
-
-                <!-- Units Field -->
-                <div class="mb-4">
-                    <label for="_units" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Units</label>
-                    <input
-                        type="text"
-                        name="_units"
-                        id="_units"
-                        value="{{ old('_units', $tideGauge->_units) }}"
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                        required>
-                </div>
-
                 <!-- Submit Button -->
                 <div class="flex justify-end">
                     <button type="submit"

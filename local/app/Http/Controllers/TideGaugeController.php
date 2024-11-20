@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Measurement;
 use App\Models\TideGauge;
 use Illuminate\Http\Request;
 
@@ -31,16 +32,24 @@ class TideGaugeController extends Controller
             '_loc' => 'required|string|max:255',
             '_lat' => 'required|numeric',
             '_lon' => 'required|numeric',
-            '_date' => 'required|date',
-            '_time' => 'required',
-            '_tide' => 'required|numeric',
-            '_units' => 'required|string|max:10',
         ]);
 
         TideGauge::create($request->all());
 
         return redirect()->route('tidegauges.index')
             ->with('success', 'Tide Gauge added successfully.');
+    }
+
+    public function view(String $id)
+    {
+        $tideGauge = TideGauge::find($id);
+        if (!$tideGauge) {
+            return redirect()->route('tidegauges.index')
+                ->with('error', 'Tide Gauge not found.');
+        }
+        $measurements = $tideGauge->measurements;
+
+        return view('tidegauges.view', compact('tideGauge', 'measurements'));
     }
 
     public function edit(String $id)
@@ -67,10 +76,6 @@ class TideGaugeController extends Controller
             '_loc' => 'required|string|max:255',
             '_lat' => 'required|numeric',
             '_lon' => 'required|numeric',
-            '_date' => 'required|date',
-            '_time' => 'required',
-            '_tide' => 'required|numeric',
-            '_units' => 'required|string|max:10',
         ]);
 
         $tideGauge->update($request->all());
