@@ -1,52 +1,39 @@
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="flex justify-center">
-                        <h2 class="text-2xl font-extrabold text-gray-800 dark:text-white">
-                            {{$tideGauge->_serial}} - {{$tideGauge->_country}} - {{$tideGauge->_loc}} ({{$tideGauge->_lat}}, {{$tideGauge->_lon}})
-                        </h2>
-                    </div>
-
-
-            @if(Auth()->user()->is_admin)
-                <div class="flex justify-start mb-4">
-                    <a href="{{ route('measurement.create', ['id' => $tideGauge->id]) }}"
-                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Add Data
-                    </a>
-                </div>
-            @endif
-
             @if(session('success'))
                 <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mt-4">
                     {{ session('success') }}
                 </div>
             @endif
-            <div class="p-2 sm:px-20 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-                <div class="flex justify-center">
-                    <h2 class="text-xl font-extrabold text-gray-800 dark:text-white">Tide Gauge Data</h2>
-                </div>
-            </div>
             <table class="w-full table-auto text-gray-800 dark:text-white bg-gray-300 dark:bg-gray-800">
                 <thead class="uppercase text-sm leading-normal">
                 <tr>
-                    <th class="border px-4 py-2">DateTime</th>
-                    <th class="border px-4 py-2">Tide</th>
+                    <th class="border px-4 py-2">Serial</th>
+                    <th class="border px-4 py-2">Country</th>
+                    <th class="border px-4 py-2">Local</th>
+                    <th class="border px-4 py-2">Location</th>
+                    <th class="border px-4 py-2">Datetime</th>
+                    <th class="border px-4 py-2">Data</th>
                     <th class="border px-4 py-2">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($measurements as $record)
+                @foreach($measurements as $measurement)
                     <tr>
-                        <td class="border px-4 py-2 text-center">{{ $record->_date }} {{ $record->_time }}</td>
-                        <td class="border px-4 py-2 text-center">{{ $record->_tide }} {{ $record->_units }}</td>
+                        <td class="border px-4 py-2 text-center">{{ $measurement->tideGauge->_serial }}</td>
+                        <td class="border px-4 py-2 text-center">{{ $measurement->tideGauge->_country }}</td>
+                        <td class="border px-4 py-2 text-center">{{ $measurement->tideGauge->_loc }}</td>
+                        <td class="border px-4 py-2 text-center">{{ $measurement->tideGauge->_lat }}, {{ $measurement->tideGauge->_lon }}</td>
+                        <td class="border px-4 py-2 text-center">{{ $measurement->_date }} {{ $measurement->_time }}</td>
+                        <td class="border px-4 py-2 text-center">{{ $measurement->_tide }} {{ $measurement->_units }}</td>
                         <td class="border px-4 py-2 flex space-x-2 justify-center">
-                            <a href="{{ route('measurement.edit', $record) }}"
+                            <a href="{{ route('measurement.edit', $measurement) }}"
                                class="bg-green-700 hover:bg-green-500 text-white py-1 px-2 rounded">
                                 Edit
                             </a>
                             @if(Auth()->user()->is_admin)
-                                <form action="{{ route('measurement.destroy', $record) }}" method="POST"
+                                <form action="{{ route('measurement.destroy', $measurement) }}" method="POST"
                                       onsubmit="return confirm('Are you sure?');">
                                     @csrf
                                     @method('DELETE')

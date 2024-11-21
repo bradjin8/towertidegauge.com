@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MeasurementController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TideGaugeController;
 use App\Http\Controllers\UserController;
@@ -35,9 +36,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/tidegauges/create', [TideGaugeController::class, 'create'])->middleware('admin')->name('tidegauges.create');
     Route::post('/tidegauges', [TideGaugeController::class, 'store'])->middleware('admin')->name('tidegauges.store');
     Route::get('/tidegauges/{id}/edit', [TideGaugeController::class, 'edit'])->name('tidegauges.edit');
-    Route::get('/tidegauges/{id}/view', [TideGaugeController::class, 'view'])->name('tidegauges.view');
     Route::put('/tidegauges/{id}', [TideGaugeController::class, 'update'])->name('tidegauges.update');
     Route::delete('/tidegauges/{id}', [TideGaugeController::class, 'destroy'])->middleware('admin')->name('tidegauges.destroy');
+
+    Route::get('/tidegauges/{id}/view', [TideGaugeController::class, 'view'])->name('tidegauges.view');
+
+    Route::get('/tidegauges/{id}/adddata', [MeasurementController::class, 'create'])->name('measurement.create');
+    Route::get('/measurement', [MeasurementController::class, 'index'])->name('measurement.index');
+    Route::post('/measurement/create', [MeasurementController::class, 'store'])->name('measurement.store');
+    Route::get('/measurement/{id}/edit', [MeasurementController::class, 'edit'])->name('measurement.edit');
+    Route::put('/measurement/{id}', [MeasurementController::class, 'update'])->name('measurement.update');
+    Route::delete('/measurement/{id}', [MeasurementController::class, 'destroy'])->name('measurement.destroy');
 });
 
 Route::middleware('admin')->group(function () {
