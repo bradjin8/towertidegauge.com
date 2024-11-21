@@ -35,8 +35,7 @@ function initMap() {
             '<body>' +
             '<div id="siteContent">' +
             link +
-            '<div>' + data._tide + data._units + '</div>' +
-            '<div>' + data._date + '</div>' +
+            '<div>' + data._country + '</div>' +
             '</div>' +
             '</body></head>';
 
