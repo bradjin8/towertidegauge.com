@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => ({
     }),
     build: {
         manifest: true,
-        outDir: '..',
+        outDir: '../build',
         rollupOptions: {
             input: [
                 'resources/js/app.js',
