@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite';
+import {defineConfig} from 'vite';
 import laravel from 'laravel-vite-plugin';
 
-export default defineConfig(({ mode }) => ({
+export default defineConfig({
     plugins: [
         laravel({
             input: [
@@ -11,23 +11,11 @@ export default defineConfig(({ mode }) => ({
             refresh: true,
         }),
     ],
-    ...(mode === 'development' && {
-        server: {
-            host: '127.0.0.1',
-            port: 5173,
-            hmr: {
-                host: 'localhost'
-            }
+    server: {
+        host: '127.0.0.1',
+        port: 5173,
+        hmr: {
+            host: 'localhost'
         }
-    }),
-    build: {
-        manifest: true,
-        outDir: '../build',
-        rollupOptions: {
-            input: [
-                'resources/js/app.js',
-                'resources/css/app.css',
-            ],
-        },
     }
-}));
+});
