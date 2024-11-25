@@ -73,9 +73,17 @@ function GetTideGaugeData() {
         if (this.readyState == 4 && this.status == 200) {
             TideHistory = this.responseText
             readings = JSON.parse(this.responseText);
-            readingsCount = readings.length;
+            readingsCount = readings.items.length;
             document.getElementById("TideTable").innerHTML = "";
-            BuildTideTable(readings, "Read");
+            var items = readings.items.map((it) => ({
+                ...it,
+                _serial: readings.tideGauge._serial,
+                _country: readings.tideGauge._country,
+                _loc: readings.tideGauge._loc,
+                _lat: readings.tideGauge._lat,
+                _lon: readings.tideGauge._lon,
+            }))
+            BuildTideTable(items, "Read");
             BuildTideChart();
             GetPredictedTideGaugeData();
         }

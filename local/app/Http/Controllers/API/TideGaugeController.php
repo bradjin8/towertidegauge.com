@@ -32,8 +32,8 @@ class TideGaugeController extends Controller
         if (!$tideGauge) {
             return response()->json(['error' => 'Tide gauge not found'], 404);
         }
-        $item = $tideGauge->measurements()->get();
-        return response()->json($item);
+        $items = $tideGauge->measurements()->get();
+        return response()->json(['tideGauge' => $tideGauge, 'items' => $items]);
     }
 
     // Store a new tide gauge
