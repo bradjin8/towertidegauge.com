@@ -59,7 +59,7 @@ class MeasurementController extends Controller
 
     public function update(Request $request, String $id)
     {
-        $measurement = TideGauge::find($id);
+        $measurement = Measurement::find($id);
         if (!$measurement) {
             return redirect()->route('measurement.index')
                 ->with('error', 'Tide data not found.');
@@ -73,7 +73,7 @@ class MeasurementController extends Controller
 
         $measurement->update($request->all());
 
-        return redirect()->route('measurement.index')
+        return redirect()->route('tidegauges.view', ['id' => $measurement->tideGauge->id])
             ->with('success', 'Tide data updated successfully.');
     }
 
