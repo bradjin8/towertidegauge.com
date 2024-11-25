@@ -78,6 +78,6 @@ class TideGaugeController extends Controller
             '_units' => $units,
         ]);
 
-        return response()->json($tideGauge, 201);
+        return response("OK", 201);
     }
 }
