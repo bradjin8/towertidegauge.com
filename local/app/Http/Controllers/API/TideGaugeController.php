@@ -28,7 +28,7 @@ class TideGaugeController extends Controller
     // Fetch a tide gauge by _serial
     public function getItemsBySerial($serial)
     {
-        $tideGauge = TideGauge::query(['_serial' => $serial])->first();
+        $tideGauge = TideGauge::query()->where('_serial', $serial)->first();
         if (!$tideGauge) {
             return response()->json(['error' => 'Tide gauge not found'], 404);
         }
