@@ -139,8 +139,8 @@ function AssignTideDivs(data, i, tp) {
     }
     else {
         if (tp == "Read") {
-            if (data[i]["_serial"] != sn) { return; }
-            if (data[i]["_country"] == "") { return; }
+            // if (data[i]["_serial"] != sn) { return; }
+            // if (data[i]["_country"] == "") { return; }
             if (i == 0) {
                 let dt = data[i]["_date"] + " " + data[i]["_time"];
                 dt = dt.substring(0, dt.length - 3);
