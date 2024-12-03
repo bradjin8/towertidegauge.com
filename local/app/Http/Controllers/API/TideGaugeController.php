@@ -32,7 +32,7 @@ class TideGaugeController extends Controller
         if (!$tideGauge) {
             return response()->json(['error' => 'Tide gauge not found'], 404);
         }
-        $items = $tideGauge->measurements()->get();
+        $items = $tideGauge->measurements->sortByDesc('created_at')->take(50)->values();
         return response()->json(['tideGauge' => $tideGauge, 'items' => $items]);
     }
 
@@ -55,8 +55,8 @@ class TideGaugeController extends Controller
         $tide = $snippets[8];
         $units = $snippets[9];
 
-        $tideGauge = TideGauge::query(['_serial' => $serial])->first();
-        if (!$tideGauge) {
+        $tideGauge = TideGauge::query()->where('_serial', $serial)->first();
+        if ($tideGauge == null) {
             $country = $snippets[2];
             $loc = $snippets[3];
             $lat = $snippets[4];

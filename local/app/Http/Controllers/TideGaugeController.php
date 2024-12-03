@@ -47,7 +47,7 @@ class TideGaugeController extends Controller
             return redirect()->route('tidegauges.index')
                 ->with('error', 'Tide Gauge not found.');
         }
-        $measurements = $tideGauge->measurements;
+        $measurements = $tideGauge->measurements->sortByDesc('created_at')->take(50);
 
         return view('tidegauges.view', compact('tideGauge', 'measurements'));
     }
