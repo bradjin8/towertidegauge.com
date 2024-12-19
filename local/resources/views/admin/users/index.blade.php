@@ -23,9 +23,9 @@
                 <thead>
                 <tr class="text-gray-950 dark:text-gray-100 uppercase text-sm leading-normal">
                     <th class="py-2 px-2 text-left">Name</th>
-                    <th class="py-2 px-2 text-left hidden sm:block">Email</th>
-                    <th class="py-2 px-2 text-left hidden sm:block">Phone</th>
-                    <th class="py-2 px-2 text-left hidden sm:block">Company Name</th>
+                    <th class="py-2 px-2 text-left hidden sm:table-cell ">Email</th>
+                    <th class="py-2 px-2 text-left hidden sm:table-cell">Phone</th>
+                    <th class="py-2 px-2 text-left hidden sm:table-cell">Company Name</th>
                     <th class="py-2 px-2 text-center">Actions</th>
                 </tr>
                 </thead>
@@ -45,11 +45,11 @@
                                 @endif
                             </div>
                         </td>
-                        <td class="py-2 px-2 text-left hidden sm:block">
+                        <td class="py-2 px-2 text-left hidden sm:table-cell">
                             {{ $user->email }}
                         </td>
-                        <td class="py-2 px-2 text-left hidden sm:block">{{ $user->phone_number}}</td>
-                        <td class="py-2 px-2 text-left hidden sm:block">{{ $user->company_name}}</td>
+                        <td class="py-2 px-2 text-left hidden sm:table-cell">{{ $user->phone_number}}</td>
+                        <td class="py-2 px-2 text-left hidden sm:table-cell">{{ $user->company_name}}</td>
                         <td class="py-2 px-2 text-center">
                             <div class="flex item-center justify-center gap-4">
                                 <a href="{{ route('users.edit', $user) }}"
