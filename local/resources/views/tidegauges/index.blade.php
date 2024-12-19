@@ -25,8 +25,8 @@
                 <tr>
                     <th class="border px-4 py-2">Serial</th>
                     <th class="border px-4 py-2">Country</th>
-                    <th class="border px-4 py-2">Local</th>
-                    <th class="border px-4 py-2">Location</th>
+                    <th class="border px-4 py-2  hidden sm:block">Local</th>
+                    <th class="border px-4 py-2 hidden sm:block">Location</th>
                     <th class="border px-4 py-2">Actions</th>
                 </tr>
                 </thead>
@@ -35,9 +35,9 @@
                     <tr>
                         <td class="border px-4 py-2 text-center">{{ $tideGauge->_serial }}</td>
                         <td class="border px-4 py-2 text-center">{{ $tideGauge->_country }}</td>
-                        <td class="border px-4 py-2 text-center">{{ $tideGauge->_loc }}</td>
-                        <td class="border px-4 py-2 text-center">{{ $tideGauge->_lat }}, {{ $tideGauge->_lon }}</td>
-                        <td class="border px-4 py-2 flex space-x-2 justify-center">
+                        <td class="border px-4 py-2 text-center hidden sm:block">{{ $tideGauge->_loc }}</td>
+                        <td class="border px-4 py-2 text-center  hidden sm:block">{{ $tideGauge->_lat }}, {{ $tideGauge->_lon }}</td>
+                        <td class="border px-2 sm:px-4 py-2 flex space-x-2 justify-center">
                             <a href="{{ route('tidegauges.view', $tideGauge) }}"
                                class="bg-blue-700 hover:bg-blue-500 text-white py-1 px-2 rounded">
                                 View

@@ -83,6 +83,20 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            @if(Auth()->user()->is_admin)
+                <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                    {{ __('Users') }}
+                </x-responsive-nav-link>
+            @endif
+            <x-responsive-nav-link :href="route('tidegauges.index')" :active="request()->routeIs('tidegauges.index')">
+                {{ __('TideGauges') }}
+            </x-responsive-nav-link>
+            @if(Auth()->user()->is_admin)
+                <x-responsive-nav-link :href="route('assign.tidegauges')" :active="request()->routeIs('assign.tidegauges')">
+                    {{ __('Assign Gauges To Users') }}
+                </x-responsive-nav-link>
+            @endif
+
         </div>
 
         <!-- Responsive Settings Options -->
