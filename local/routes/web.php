@@ -5,6 +5,7 @@ use App\Http\Controllers\MeasurementController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TideGaugeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WeatherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +48,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/measurement/{id}/edit', [MeasurementController::class, 'edit'])->name('measurement.edit');
     Route::put('/measurement/{id}', [MeasurementController::class, 'update'])->name('measurement.update');
     Route::delete('/measurement/{id}', [MeasurementController::class, 'destroy'])->name('measurement.destroy');
+
+    Route::get('/weather', [WeatherController::class, 'index'])->name('weather.index');
+    Route::get('/weather/create', [WeatherController::class, 'create'])->name('weather.create');
+    Route::post('/weather/create', [WeatherController::class, 'store'])->name('weather.store');
+    Route::get('/weather/{id}/edit', [WeatherController::class, 'edit'])->name('weather.edit');
+    Route::put('/weather/{id}', [WeatherController::class, 'update'])->name('weather.update');
+    Route::delete('/weather/{id}', [WeatherController::class, 'destroy'])->name('weather.destroy');
+
 });
 
 Route::middleware('admin')->group(function () {

@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\API\TideGaugeController;
+use App\Http\Controllers\API\WeatherController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,7 +21,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/tidegauge', [\App\Http\Controllers\API\TideGaugeController::class, 'index']);
-Route::get('/tidegauge/{id}', [\App\Http\Controllers\API\TideGaugeController::class, 'show']);
-Route::get('/tidesBySerial/{serial}', [\App\Http\Controllers\API\TideGaugeController::class, 'getItemsBySerial']);
-Route::post('/tidedata', [\App\Http\Controllers\API\TideGaugeController::class, 'store']);
+Route::get('/tidegauge', [TideGaugeController::class, 'index']);
+Route::get('/tidegauge/{id}', [TideGaugeController::class, 'show']);
+Route::get('/tidesBySerial/{serial}', [TideGaugeController::class, 'getItemsBySerial']);
+Route::post('/tidedata', [TideGaugeController::class, 'store']);
+
+Route::get('/weather', [WeatherController::class, 'index']);
+Route::post('/weathers', [WeatherController::class, 'store']);
+Route::get('/weather/{id}', [WeatherController::class, 'show']);
+Route::get('/weather/serial/{serial}', [WeatherController::class, 'getItemsBySerial']);

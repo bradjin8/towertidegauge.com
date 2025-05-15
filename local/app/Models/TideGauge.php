@@ -29,4 +29,9 @@ class TideGauge extends Model
     {
         return $this->hasMany(Measurement::class, 'tidegauge_id');
     }
+
+    public function weathers(): HasMany
+    {
+        return $this->hasMany(Weather::class, 'tidegauge_id');
+    }
 }
