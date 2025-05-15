@@ -36,9 +36,9 @@
                     <tr>
                         <td class="border px-4 py-2 text-center">{{ $weather->tideGauge->_serial }}</td>
                         <td class="border px-4 py-2 text-center">{{ $weather->_date }} {{ $weather->_time }}</td>
-                        <td class="border px-4 py-2 text-center hidden sm:table-cell">{{ $weather->barometric_pressure_inches }}inch, {{$weather->barometric_pressure_mm}}bar</td>
-                        <td class="border px-4 py-2 text-center hidden sm:table-cell">{{ $weather->air_temperature }}&deg;C/ {{$weather->water_temperature}}&deg;C</td>
-                        <td class="border px-4 py-2 text-center hidden sm:table-cell">{{ $weather->relative_humidity }}%/ {{$weather->absolute_humidity}}%</td>
+                        <td class="border px-4 py-2 text-center hidden sm:table-cell">{{ $weather->barometric_pressure_inches }} inch, {{$weather->barometric_pressure_mm}} bar</td>
+                        <td class="border px-4 py-2 text-center hidden sm:table-cell">{{ $weather->air_temperature }}&deg;C / {{$weather->water_temperature}}&deg;C</td>
+                        <td class="border px-4 py-2 text-center hidden sm:table-cell">{{ $weather->relative_humidity }}% / {{$weather->absolute_humidity}}%</td>
                         <td class="border px-4 py-2 ">
                             <div class="flex justify-center gap-2">
                                 <a href="{{ route('weather.edit', $weather) }}"
