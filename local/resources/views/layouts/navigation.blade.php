@@ -28,7 +28,7 @@
                             {{ __('Assign Gauges To Users') }}
                         </x-nav-link>
                     @endif
-                    <x-nav-link :href="route('weather.index')" :active="request()->routeIs('weather.index')">
+                    <x-nav-link :href="route('weatherdata.index')" :active="request()->routeIs('weatherdata.index')">
                         {{ __('Weather Data') }}
                     </x-nav-link>
                 </div>
@@ -99,7 +99,7 @@
                     {{ __('Assign Gauges To Users') }}
                 </x-responsive-nav-link>
             @endif
-            <x-responsive-nav-link :href="route('weather.index')" :active="request()->routeIs('weather.index')">
+            <x-responsive-nav-link :href="route('weatherdata.index')" :active="request()->routeIs('weatherdata.index')">
                 {{ __('Weather Data') }}
             </x-responsive-nav-link>
 

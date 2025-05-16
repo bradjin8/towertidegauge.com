@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\API\TideGaugeController;
 use App\Http\Controllers\API\WeatherController;
+use App\Http\Controllers\API\WeatherDataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,8 @@ Route::get('/tidegauge/{id}', [TideGaugeController::class, 'show']);
 Route::get('/tidesBySerial/{serial}', [TideGaugeController::class, 'getItemsBySerial']);
 Route::post('/tidedata', [TideGaugeController::class, 'store']);
 
-Route::get('/weather', [WeatherController::class, 'index']);
-Route::post('/weathers', [WeatherController::class, 'store']);
-Route::get('/weather/{id}', [WeatherController::class, 'show']);
-Route::get('/weather/serial/{serial}', [WeatherController::class, 'getItemsBySerial']);
+Route::get('/weatherdata', [WeatherDataController::class, 'index']);
+Route::post('/weathers', [WeatherDataController::class, 'store']);
+Route::get('/weatherdata/{id}', [WeatherDataController::class, 'show']);
+Route::get('/weatherdata/serial/{serial}', [WeatherDataController::class, 'getItemsBySerial']);
+

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\TideGauge;
 use App\Models\Weather;
+use App\Models\WeatherData;
 use Illuminate\Http\Request;
 
 class WeatherController extends Controller
@@ -91,6 +92,42 @@ class WeatherController extends Controller
             'wind_direction_mg' => $wind_direction_mg,
             'wind_speed_kts' => $wind_speed_kts,
             'wind_speed_mps' => $wind_speed_mps,
+        ]);
+
+        return response()->json(['success' => true]);
+    }
+
+    public function storeAsJSON(Request $request)
+    {
+        $data = $request->get('weatherstring');
+        if (!$data) {
+            return response()->json(['error' => 'Weather string not found'], 404);
+        }
+
+        $serial = $data['Serial'];
+        $time = $data['Time'];
+        $windDirection = $data['WindDirection'];
+        $windSpeed = $data['WindSpeed'];
+        $temperature = $data['Temperature'];
+        $humidity = $data['Humidity'];
+        $pressure = $data['Pressure'];
+
+        // validate if all are present
+        if (
+            !$serial || !$time
+            || !$windDirection || !$windSpeed || !$temperature || !$humidity || !$pressure
+        ) {
+            return response()->json(['error' => 'Invalid data'], 400);
+        }
+        ;
+        WeatherData::create([
+            'serial' => $serial,
+            'time' => $time,
+            'wind_direction' => $windDirection,
+            'wind_speed' => $windSpeed,
+            'temperature' => $temperature,
+            'humidity' => $humidity,
+            'pressure' => $pressure,
         ]);
 
         return response()->json(['success' => true]);
