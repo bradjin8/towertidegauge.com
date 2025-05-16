@@ -233,7 +233,7 @@
             }
 
             $.get('{{url('/api/weatherdata/serial/')}}/{{$tide->_serial}}', null, function (data, status) {
-                console.log({data, status});
+                // console.log({data, status});
                 if (data && data.items && data.items.length > 0) {
                     $('#temperature').text(`${data.items[0].temperature} °C`);
                     $('#pressure').text(`${data.items[0].pressure} mB`);
