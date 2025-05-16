@@ -46,23 +46,28 @@
                 </div>
             </div>
         </div>
-        <div class="col-span-2 grid grid-cols-2 md:flex-row gap-2 w-full">
-            <div class="bg-white rounded p-4 w-full ">
-                <div class="Readings" id="Readings"></div>
-                <div id="CurrentTideTime"></div>
-                <div id="CurrentTideValue"></div>
-                <a class="history" id="tidehistory" onclick="ShowHistory()">History ▼</a>
-                <canvas class="TideChart" id="TideChart"></canvas>
-                <div class="flex justify-center" id="TideTableContainer">
-                    <table id="table_history"></table>
-                </div>
-            </div>
-            <div class="flex flex-col bg-white rounded p-4 w-full ">
-                <span class="Readings" id="Predictions"></span>
-                <a class="history" id="PredictionsTable" onclick="ShowPrediction()">Predictions ▼</a>
-                <canvas class="TideChart" id="PredictedTideChart"></canvas>
-                <div class="flex justify-center" id="PredictionTableContainer">
-                    <table id="table_prediction"></table>
+        <div class="col-span-2 grid grid-cols-1 md:flex-row gap-2 w-full">
+            <div class="flex flex-col gap-2">
+                <div class="bg-white rounded p-4 h-12 text-lg font-bold">Serial: {{$tide->_serial}}</div>
+                <div class="grid grid-cols-2 md:flex-row gap-2 w-full">
+                    <div class="bg-white rounded p-4 w-full ">
+                        <div class="Readings" id="Readings"></div>
+                        <div id="CurrentTideTime"></div>
+                        <div id="CurrentTideValue"></div>
+                        <a class="history text-lg" id="tidehistory" onclick="ShowHistory()">History ▼</a>
+                        <canvas class="TideChart" id="TideChart"></canvas>
+                        <div class="flex justify-center" id="TideTableContainer">
+                            <table id="table_history"></table>
+                        </div>
+                    </div>
+                    <div class="flex flex-col bg-white rounded p-4 w-full ">
+                        <span class="Readings" id="Predictions"></span>
+                        <a class="history text-lg" id="PredictionsTable" onclick="ShowPrediction()">Predictions ▼</a>
+                        <canvas class="TideChart" id="PredictedTideChart"></canvas>
+                        <div class="flex justify-center" id="PredictionTableContainer">
+                            <table id="table_prediction"></table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -76,9 +81,6 @@
     <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/v8/js/anychart-circular-gauge.min.js"></script>
     <script src="https://cdn.anychart.com/releases/v8/themes/monochrome.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.datatables.net/2.3.1/js/dataTables.js"></script>
     <script>
@@ -86,6 +88,7 @@
         let recordedTidesAddress = '{{url('/api/tidesBySerial')}}/{{$tide->_serial}}';
 
     </script>
+    <script src="{{asset('js/home.js')}}"></script>
     <script src="{{asset('js/widget.js')}}"></script>
     <script>
         $(document).ready(function () {

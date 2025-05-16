@@ -23,7 +23,7 @@
     <body class="font-sans text-gray-900 antialiased h-screen">
         <div class="topnav" id="myTopnav">
             <div>
-                <a href="/"><img id="logo" src="{{asset('img/tower.png')}}"></a>
+                <a href="{{url('/')}}"><img id="logo" src="{{asset('img/tower.png')}}"></a>
                 <div class="dropdown">
                     <button class="dropbtn">Tide Gauges
                         <i class="fa fa-caret-down"></i>
@@ -33,7 +33,7 @@
                 </div>
             </div>
             @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 text-right">
+                <div class="sm:fixed sm:top-0 sm:right-10 text-right">
                     @auth
                         <a href="{{ url('/dashboard') }}"
                            class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
@@ -51,7 +51,17 @@
             @endif
         </div>
         @yield('content')
-    <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=default"></script>
-    @yield('script')
+        <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=default"></script>
+        <script async
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAod1NL-93chXYK_hmcn49HLBBpI_udsA&callback=initMap&v=weekly"
+                defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+                integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script>
+            let base_url = '{{url('/')}}';
+        </script>
+        @yield('script')
     </body>
 </html>
