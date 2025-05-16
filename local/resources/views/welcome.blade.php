@@ -1,4 +1,4 @@
-@extends('layouts.guest')
+@extends('layouts.public')
 
 @section('content')
     <div class="map" id="map"></div>
