@@ -22,10 +22,10 @@
 @section('content')
     <div class="grid grid-cols-1 md:grid-cols-3 md:gap-2 w-full h-full p-2 ">
         <div class="rounded-md bg-white p-2 h-screen w-full">
-            <div class="flex md:hidden text-3xl font-bold justify-center mt-2">Serial: {{$tide->_serial}}</div>
+            <div class="flex md:hidden text-3xl font-bold justify-center mt-2">Station: {{$tide->_serial}}</div>
             <div class="font-bold text-xl text-center">{{$tide->_loc}}, {{$tide->_country}}</div>
             <div class="text-md text-gray-500 text-center w-4/5 m-auto" id="CurrentTide">
-                Current tide reading at {{$recent->_date}} {{$recent->_time}} {{$recent->_tide}} {{$recent->_units}}
+                Current tide reading at {{$recent->_date}} {{$recent->_time}} <span class="font-bold underline">{{$recent->_tide}} {{$recent->_units}}</span>
             </div>
             <div
                 class="mt-2 text-6xl rounded-lg text-indigo-400 w-full h-3/5">
@@ -51,7 +51,7 @@
         </div>
         <div class="col-span-2 grid grid-cols-1 md:flex-row gap-2 w-full">
             <div class="flex flex-col gap-2">
-                <div class="hidden md:flex bg-white rounded p-4 h-12 text-lg font-bold">Serial: {{$tide->_serial}}</div>
+                <div class="hidden md:flex bg-white rounded p-4 h-12 text-lg font-bold">Station: {{$tide->_serial}}</div>
                 <div class="grid grid-cols-1 md:grid-cols-2 md:flex-row gap-2 w-full mt-2 md:mt-0">
                     <div class="bg-white rounded p-4 w-full ">
                         <div class="Readings" id="Readings"></div>
