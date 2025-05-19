@@ -52,7 +52,7 @@
         <div class="col-span-2 grid grid-cols-1 md:flex-row gap-2 w-full">
             <div class="flex flex-col gap-2">
                 <div class="hidden md:flex bg-white rounded p-4 h-12 text-lg font-bold">Station: {{$tide->_serial}}</div>
-                <div class="grid grid-cols-1 md:grid-cols-2 md:flex-row gap-2 w-full mt-2 md:mt-0">
+                <div class="grid grid-cols-1 md:grid-cols-2 md:flex-row gap-2 w-full mt-2 md:mt-0 mb-2">
                     <div class="bg-white rounded p-4 w-full ">
                         <div class="Readings" id="Readings"></div>
                         <div id="CurrentTideTime"></div>
@@ -71,11 +71,51 @@
                             <table id="table_prediction"></table>
                         </div>
                     </div>
+
+                    <div class="flex flex-col bg-white rounded p-4 w-full ">
+                        <span class="text-lg cursor-pointer" id="temperature_title" onclick="toggleTemperature()">Temperature ▼</span>
+                        <canvas class="TideChart" id="temperature_chart"></canvas>
+                        <div class="flex justify-center" id="temperature_table_container">
+                            <table id="temperature_table"></table>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col bg-white rounded p-4 w-full ">
+                        <span class="text-lg cursor-pointer" id="humidity_title" onclick="toggleHumidity()">Humidity ▼</span>
+                        <canvas class="TideChart" id="humidity_chart"></canvas>
+                        <div class="flex justify-center" id="humidity_table_container">
+                            <table id="humidity_table"></table>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col bg-white rounded p-4 w-full ">
+                        <span class="text-lg cursor-pointer" id="pressure_title" onclick="togglePressure()">Pressure ▼</span>
+                        <canvas class="TideChart" id="pressure_chart"></canvas>
+                        <div class="flex justify-center" id="pressure_table_container">
+                            <table id="pressure_table"></table>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col bg-white rounded p-4 w-full ">
+                        <span class="text-lg cursor-pointer" id="wind_direction_title" onclick="toggleWindDirection()">Wind Direction ▼</span>
+                        <canvas class="TideChart" id="wind_direction_chart"></canvas>
+                        <div class="flex justify-center" id="wind_direction_table_container">
+                            <table id="wind_direction_table"></table>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col bg-white rounded p-4 w-full ">
+                        <span class="text-lg cursor-pointer" id="wind_speed_title" onclick="toggleWindSpeed()">Wind Speed ▼</span>
+                        <canvas class="TideChart" id="wind_speed_chart"></canvas>
+                        <div class="flex justify-center" id="wind_speed_table_container">
+                            <table id="wind_speed_table"></table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="h-2"></div>
+    <div class="h-4"></div>
 @endsection
 
 @section('script')
@@ -95,146 +135,6 @@
     <script src="{{asset('js/widget.js')}}"></script>
     <script>
         $(document).ready(function () {
-            function drawWindDirectionChart(direction, speed) {
-                anychart.onDocumentReady(function () {
-                    // set chart theme
-                    anychart.theme('monochrome');
-                    var gauge = anychart.gauges.circular();
-                    gauge
-                        .fill('#fff')
-                        .stroke(null)
-                        .padding(0)
-                        .margin(30)
-                        .startAngle(0)
-                        .sweepAngle(360);
-
-                    gauge
-                        .axis()
-                        .labels()
-                        .padding(3)
-                        .position('outside')
-                        .format('{%Value}\u00B0');
-
-                    gauge.data([direction, speed]);
-
-                    gauge
-                        .axis()
-                        .scale()
-                        .minimum(0)
-                        .maximum(360)
-                        .ticks({interval: 30})
-                        .minorTicks({interval: 10});
-
-                    gauge
-                        .axis()
-                        .fill('#7c868e')
-                        .startAngle(0)
-                        .sweepAngle(360)
-                        .width(1)
-                        .ticks({
-                            type: 'line',
-                            fill: '#7c868e',
-                            length: 4,
-                            position: 'outside'
-                        });
-
-                    gauge
-                        .axis(1)
-                        .fill('#7c868e')
-                        .startAngle(270)
-                        .radius(40)
-                        .sweepAngle(180)
-                        .width(1)
-                        .ticks({
-                            type: 'line',
-                            fill: '#7c868e',
-                            length: 4,
-                            position: 'outside'
-                        });
-
-                    gauge
-                        .axis(1)
-                        .labels()
-                        .padding(3)
-                        .position('outside')
-                        .format('{%Value} kts');
-
-                    gauge
-                        .axis(1)
-                        .scale()
-                        .minimum(0)
-                        .maximum(25)
-                        .ticks({interval: 5})
-                        .minorTicks({interval: 1});
-
-                    gauge.title().padding(0).margin([0, 0, 10, 0]);
-
-                    gauge
-                        .marker()
-                        .fill('#64b5f6')
-                        .stroke(null)
-                        .size('15%')
-                        .zIndex(120)
-                        .radius('97%');
-
-                    gauge
-                        .needle()
-                        .fill('#1976d2')
-                        .stroke(null)
-                        .axisIndex(1)
-                        .startRadius('6%')
-                        .endRadius('38%')
-                        .startWidth('2%')
-                        .middleWidth(null)
-                        .endWidth('0');
-
-                    gauge.cap().radius('4%').fill('#1976d2').enabled(true).stroke(null);
-
-                    var bigTooltipTitleSettings = {
-                        fontFamily: '\'Verdana\', Helvetica, Arial, sans-serif',
-                        fontWeight: 'normal',
-                        fontSize: '12px',
-                        hAlign: 'left',
-                        fontColor: '#212121'
-                    };
-
-                    gauge
-                        .label()
-                        .text(
-                            '<span style="color: #64B5F6; font-size: 14px">Wind Direction: </span>' +
-                            '<span style="color: #5AA3DD; font-size: 16px">' +
-                            direction + ' °' +
-                            // '\u00B0 (+/- 0.5\u00B0)' +
-                            '</span><br>' +
-                            '<span style="color: #1976d2; font-size: 14px">Wind Speed:</span> ' +
-                            '<span style="color: #166ABD; font-size: 16px">' +
-                            speed +
-                            ' kts</span>'
-                        )
-                        .useHtml(true)
-                        .textSettings(bigTooltipTitleSettings);
-                    gauge
-                        .label()
-                        .hAlign('center')
-                        .anchor('center-top')
-                        .offsetY(-20)
-                        .padding(15, 20)
-                        .background({
-                            fill: '#fff',
-                            stroke: {
-                                thickness: 1,
-                                color: '#E0F0FD'
-                            }
-                        });
-
-                    // set container id for the chart
-                    gauge.container('wind_chart');
-
-                    // initiate chart drawing
-                    gauge.draw();
-                });
-            }
-
             $.get('{{url('/api/weatherdata/serial/')}}/{{$tide->_serial}}', null, function (data, status) {
                 // console.log({data, status});
                 if (data && data.items && data.items.length > 0) {
@@ -242,7 +142,9 @@
                     $('#pressure').text(`${data.items[0].pressure} mB`);
                     $('#humidity').text(`${data.items[0].humidity} %`);
                     $('#wind_speed').text(`${data.items[0].wind_speed} kts`);
+
                     drawWindDirectionChart(data.items[0].wind_direction, data.items[0].wind_speed);
+                    drawWindCharts(data.items);
                 }
             });
         });
