@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TideGaugeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WeatherController;
+use App\Http\Controllers\WeatherDataController;
 use App\Http\Controllers\WidgetController;
 use Illuminate\Support\Facades\Route;
 
@@ -58,12 +59,12 @@ Route::middleware('auth')->group(function () {
     Route::put('/weather/{id}', [WeatherController::class, 'update'])->name('weather.update');
     Route::delete('/weather/{id}', [WeatherController::class, 'destroy'])->name('weather.destroy');
 
-    Route::get('/weatherdata', [WeatherController::class, 'index'])->name('weatherdata.index');
-    Route::get('/weatherdata/create', [WeatherController::class, 'create'])->name('weatherdata.create');
-    Route::post('/weatherdata/create', [WeatherController::class, 'store'])->name('weatherdata.store');
-    Route::get('/weatherdata/{id}/edit', [WeatherController::class, 'edit'])->name('weatherdata.edit');
-    Route::put('/weatherdata/{id}', [WeatherController::class, 'update'])->name('weatherdata.update');
-    Route::delete('/weatherdata/{id}', [WeatherController::class, 'destroy'])->name('weatherdata.destroy');
+    Route::get('/weatherdata', [WeatherDataController::class, 'index'])->name('weatherdata.index');
+    Route::get('/weatherdata/create', [WeatherDataController::class, 'create'])->name('weatherdata.create');
+    Route::post('/weatherdata/create', [WeatherDataController::class, 'store'])->name('weatherdata.store');
+    Route::get('/weatherdata/{id}/edit', [WeatherDataController::class, 'edit'])->name('weatherdata.edit');
+    Route::put('/weatherdata/{id}', [WeatherDataController::class, 'update'])->name('weatherdata.update');
+    Route::delete('/weatherdata/{id}', [WeatherDataController::class, 'destroy'])->name('weatherdata.destroy');
 
 });
 
