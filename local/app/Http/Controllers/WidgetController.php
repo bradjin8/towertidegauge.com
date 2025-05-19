@@ -12,7 +12,8 @@ class WidgetController extends Controller
         if (!$tide) {
             return redirect('/');
         }
+        $recent = $tide->measurements()->orderBy('created_at', 'desc')->first();
 
-        return view('widget.show', compact('tide'));
+        return view('widget.show', compact('tide', 'recent'));
     }
 }
