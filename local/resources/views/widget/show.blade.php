@@ -25,7 +25,8 @@
             <div class="flex md:hidden text-3xl font-bold justify-center mt-2">Station: {{$tide->_serial}}</div>
             <div class="font-bold text-xl text-center">{{$tide->_loc}}, {{$tide->_country}}</div>
             <div class="text-md text-gray-500 text-center w-4/5 m-auto" id="CurrentTide">
-                Current tide reading at {{$recent->_date}} {{$recent->_time}} <span class="font-bold underline">{{$recent->_tide}} {{$recent->_units}}</span>
+                Current tide reading at {{$recent->_date}} {{$recent->_time}} <span
+                    class="font-bold underline">{{$recent->_tide}} {{$recent->_units}}</span>
             </div>
             <div
                 class="mt-2 text-6xl rounded-lg text-indigo-400 w-full h-3/5">
@@ -51,8 +52,9 @@
         </div>
         <div class="col-span-2 grid grid-cols-1 md:flex-row gap-2 w-full">
             <div class="flex flex-col gap-2">
-                <div class="hidden md:flex bg-white rounded p-4 h-12 text-lg font-bold">Station: {{$tide->_serial}}</div>
-                <div class="grid grid-cols-1 md:grid-cols-2 md:flex-row gap-2 w-full mt-2 md:mt-0 mb-2">
+                <div class="hidden md:flex bg-white rounded p-4 h-12 text-lg font-bold">
+                    Station: {{$tide->_serial}}</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 md:flex-row gap-2 w-full mt-2 md:mt-0">
                     <div class="bg-white rounded p-4 w-full ">
                         <div class="Readings" id="Readings"></div>
                         <div id="CurrentTideTime"></div>
@@ -71,7 +73,8 @@
                             <table id="table_prediction"></table>
                         </div>
                     </div>
-
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 md:flex-row gap-2 w-full">
                     <div class="flex flex-col bg-white rounded p-4 w-full ">
                         <span class="text-lg cursor-pointer" id="temperature_title" onclick="toggleTemperature()">Temperature ▼</span>
                         <canvas class="TideChart" id="temperature_chart"></canvas>
@@ -81,7 +84,8 @@
                     </div>
 
                     <div class="flex flex-col bg-white rounded p-4 w-full ">
-                        <span class="text-lg cursor-pointer" id="humidity_title" onclick="toggleHumidity()">Humidity ▼</span>
+                        <span class="text-lg cursor-pointer" id="humidity_title"
+                              onclick="toggleHumidity()">Humidity ▼</span>
                         <canvas class="TideChart" id="humidity_chart"></canvas>
                         <div class="flex justify-center" id="humidity_table_container">
                             <table id="humidity_table"></table>
@@ -89,12 +93,15 @@
                     </div>
 
                     <div class="flex flex-col bg-white rounded p-4 w-full ">
-                        <span class="text-lg cursor-pointer" id="pressure_title" onclick="togglePressure()">Pressure ▼</span>
+                        <span class="text-lg cursor-pointer" id="pressure_title"
+                              onclick="togglePressure()">Pressure ▼</span>
                         <canvas class="TideChart" id="pressure_chart"></canvas>
                         <div class="flex justify-center" id="pressure_table_container">
                             <table id="pressure_table"></table>
                         </div>
                     </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 md:flex-row gap-2 w-full mb-2">
 
                     <div class="flex flex-col bg-white rounded p-4 w-full ">
                         <span class="text-lg cursor-pointer" id="wind_direction_title" onclick="toggleWindDirection()">Wind Direction ▼</span>
