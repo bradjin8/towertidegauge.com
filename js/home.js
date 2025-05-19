@@ -14,7 +14,7 @@ function initMap() {
         mapOptions = {
             zoom: 3,
             center: mid,
-            disableDefaultUI: true,
+            disableDefaultUI: false,
         }
         map = new google.maps.Map(mapElement, mapOptions);
         google.maps.importLibrary("maps");
