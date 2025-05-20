@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WeatherController;
 use App\Http\Controllers\WeatherDataController;
 use App\Http\Controllers\WidgetController;
+use App\Http\Controllers\DeviceSettingsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,6 +67,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/weatherdata/{id}', [WeatherDataController::class, 'update'])->name('weatherdata.update');
     Route::delete('/weatherdata/{id}', [WeatherDataController::class, 'destroy'])->name('weatherdata.destroy');
 
+    Route::get('/deviceSettings/{serial}', [DeviceSettingsController::class, 'view'])->name('deviceSettings.view');
 });
 
 Route::middleware('admin')->group(function () {

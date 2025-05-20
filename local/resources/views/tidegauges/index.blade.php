@@ -57,6 +57,10 @@
                                     </button>
                                 </form>
                             @endif
+                            <a href="{{ route('deviceSettings.view', $tideGauge->_serial) }}"
+                               class="bg-grey-700 hover:bg-grey-500 text-white py-1 px-2 rounded">
+                                Settings
+                            </a>
                         </td>
                     </tr>
                 @endforeach

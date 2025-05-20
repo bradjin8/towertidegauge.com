@@ -32,3 +32,4 @@ Route::post('/weathers', [WeatherDataController::class, 'store']);
 Route::get('/weatherdata/{id}', [WeatherDataController::class, 'show']);
 Route::get('/weatherdata/serial/{serial}', [WeatherDataController::class, 'getItemsBySerial']);
 
+Route::post('/devicesettings', [\App\Http\Controllers\API\DeviceSettingsController::class, 'store']);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DeviceSettings;
 use App\Models\Measurement;
 use App\Models\TideGauge;
 use Illuminate\Http\Request;
