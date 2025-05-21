@@ -48,5 +48,9 @@
                 console.log("JSON parse error", e.message);
             }
         }
+
+        $(document).ready(function () {
+            $('#table_body td:first').click();
+        });
     </script>
 </x-app-layout>
