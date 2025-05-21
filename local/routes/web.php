@@ -27,6 +27,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/DeviceSettings', [\App\Http\Controllers\API\DeviceSettingsController::class, 'store']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/tidegauge', function () {
