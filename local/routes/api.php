@@ -4,8 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\API\TideGaugeController;
-use App\Http\Controllers\API\WeatherController;
 use App\Http\Controllers\API\WeatherDataController;
+use App\Http\Controllers\API\DeviceSettingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +32,4 @@ Route::post('/weathers', [WeatherDataController::class, 'store']);
 Route::get('/weatherdata/{id}', [WeatherDataController::class, 'show']);
 Route::get('/weatherdata/serial/{serial}', [WeatherDataController::class, 'getItemsBySerial']);
 
-Route::post('/devicesettings', [\App\Http\Controllers\API\DeviceSettingsController::class, 'store']);
+Route::post('/deviceSettings', [DeviceSettingsController::class, 'store']);
