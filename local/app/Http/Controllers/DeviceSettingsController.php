@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\DeviceSettings;
-use App\Models\Measurement;
-use App\Models\TideGauge;
-use Illuminate\Http\Request;
 
 class DeviceSettingsController extends Controller
 {
+    public function index()
+    {
+        $settings = DeviceSettings::all();
+
+        return view('device_settings.index', compact('settings'));
+    }
+
     public function view(String $serial)
     {
         $settings = DeviceSettings::query()->where('serial', $serial)->first();

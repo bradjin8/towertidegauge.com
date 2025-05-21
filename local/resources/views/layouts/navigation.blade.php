@@ -31,6 +31,9 @@
                     <x-nav-link :href="route('weatherdata.index')" :active="request()->routeIs('weatherdata.index')">
                         {{ __('Weather Data') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('deviceSettings.index')" :active="request()->routeIs('deviceSettings.index')">
+                        {{ __('System Settings') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -101,6 +104,9 @@
             @endif
             <x-responsive-nav-link :href="route('weatherdata.index')" :active="request()->routeIs('weatherdata.index')">
                 {{ __('Weather Data') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('deviceSettings.index')" :active="request()->routeIs('deviceSettings.index')">
+                {{ __('System Settings') }}
             </x-responsive-nav-link>
 
         </div>

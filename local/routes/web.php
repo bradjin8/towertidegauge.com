@@ -67,6 +67,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/weatherdata/{id}', [WeatherDataController::class, 'update'])->name('weatherdata.update');
     Route::delete('/weatherdata/{id}', [WeatherDataController::class, 'destroy'])->name('weatherdata.destroy');
 
+    Route::get('/deviceSettings', [DeviceSettingsController::class, 'index'])->name('deviceSettings.index');
     Route::get('/deviceSettings/{serial}', [DeviceSettingsController::class, 'view'])->name('deviceSettings.view');
 });
 
