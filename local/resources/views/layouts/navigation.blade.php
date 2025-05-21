@@ -31,9 +31,11 @@
                     <x-nav-link :href="route('weatherdata.index')" :active="request()->routeIs('weatherdata.index')">
                         {{ __('Weather Data') }}
                     </x-nav-link>
+                    @if(Auth()->user()->is_admin)
                     <x-nav-link :href="route('deviceSettings.index')" :active="request()->routeIs('deviceSettings.index')">
                         {{ __('System Settings') }}
                     </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -105,10 +107,11 @@
             <x-responsive-nav-link :href="route('weatherdata.index')" :active="request()->routeIs('weatherdata.index')">
                 {{ __('Weather Data') }}
             </x-responsive-nav-link>
+            @if(Auth()->user()->is_admin)
             <x-responsive-nav-link :href="route('deviceSettings.index')" :active="request()->routeIs('deviceSettings.index')">
                 {{ __('System Settings') }}
             </x-responsive-nav-link>
-
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
