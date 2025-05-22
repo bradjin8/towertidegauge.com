@@ -63,7 +63,7 @@
                             {{ $weather->temperature }}&deg;C
                         </td>
                         <td class="border px-4 py-2 text-center hidden sm:table-cell">{{ $weather->humidity}}%</td>
-                        <td class="border px-4 py-2 text-center hidden sm:table-cell">{{ $weather->pressure}}%</td>
+                        <td class="border px-4 py-2 text-center hidden sm:table-cell">{{ $weather->pressure}}mB</td>
                         <td class="border px-4 py-2 ">
                             <div class="flex justify-center gap-2">
                                 <a href="{{ route('weatherdata.edit', $weather) }}"
