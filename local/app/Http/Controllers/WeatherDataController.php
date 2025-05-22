@@ -9,10 +9,16 @@ use Illuminate\Http\Request;
 
 class WeatherDataController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $weathers = WeatherData::all();
-        return view('weatherdata.index', compact('weathers'));
+        $serials = WeatherData::query()->groupBy('serial')->distinct()->get(['serial']);
+        $serial = $request->query('serial');
+        if ($serial == null) {
+            $weathers = WeatherData::all()->sortByDesc('created_at')->take(50);
+        } else {
+            $weathers = WeatherData::query()->where('serial', $serial)->get()->sortByDesc('created_at')->take(50);
+        }
+        return view('weatherdata.index', compact('weathers', 'serials'));
     }
 
     public function create()

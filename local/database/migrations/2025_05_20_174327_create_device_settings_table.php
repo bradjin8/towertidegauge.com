@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('device_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('serial')->unique();
+            $table->string('serial');
             $table->longText('settings_json')->nullable();
             $table->timestamps();
         });

@@ -31,5 +31,7 @@ Route::get('/weatherdata', [WeatherDataController::class, 'index']);
 Route::post('/weathers', [WeatherDataController::class, 'store']);
 Route::get('/weatherdata/{id}', [WeatherDataController::class, 'show']);
 Route::get('/weatherdata/serial/{serial}', [WeatherDataController::class, 'getItemsBySerial']);
+Route::delete('/weatherdata', [WeatherDataController::class, 'destroyAll']);
+Route::delete('/weatherdata/{serial}', [WeatherDataController::class, 'destroyBySerial']);
 
 Route::post('/deviceSettings', [DeviceSettingsController::class, 'store']);

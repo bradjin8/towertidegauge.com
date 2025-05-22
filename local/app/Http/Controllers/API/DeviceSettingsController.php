@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DeviceSettings;
 use App\Models\WeatherData;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DeviceSettingsController extends Controller
 {
@@ -34,17 +35,10 @@ class DeviceSettingsController extends Controller
             return response()->json(['error' => 'Invalid data'], 400);
         }
 
-        $settings = DeviceSettings::query()->where('serial', $serial)->first();
-
-        if (!$settings) {
-            DeviceSettings::create([
-                'serial' => $serial,
-                'settings_json' => json_encode($request->all()),
-            ]);
-        } else {
-            $settings->settings_json = $request->all();
-            $settings->save();
-        }
+        DeviceSettings::create([
+            'serial' => $serial,
+            'settings_json' => json_encode($request->all()),
+        ]);
 
         return response()->json(['success' => true]);
     }

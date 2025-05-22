@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\WeatherData;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WeatherDataController extends Controller
 {
@@ -65,6 +66,19 @@ class WeatherDataController extends Controller
             'pressure' => $pressure,
         ]);
 
+        return response()->json(['success' => true]);
+    }
+
+
+    public function destroyBySerial($serial)
+    {
+        if (!$serial) {
+//            $serials = DeviceSettings::all();
+//            DeviceSettings::destroy($serials);
+            return response()->json(['error' => 'Invalid serial'], 400);
+        } else {
+            DB::table('weather_data')->where('serial', $serial)->delete();
+        }
         return response()->json(['success' => true]);
     }
 }
