@@ -11,13 +11,23 @@ class WeatherDataController extends Controller
 {
     public function index(Request $request)
     {
-        $serials = WeatherData::query()->groupBy('serial')->distinct()->get(['serial']);
-        $serial = $request->query('serial');
-        if ($serial == null) {
-            $weathers = WeatherData::all()->sortByDesc('created_at')->take(50);
-        } else {
-            $weathers = WeatherData::query()->where('serial', $serial)->get()->sortByDesc('created_at')->take(50);
+        $serials = WeatherData::query()
+            ->select('serial')
+            ->distinct()
+            ->groupBy('serial')
+            ->get();
+
+        $query = WeatherData::query();
+
+        if ($serial = $request->query('serial')) {
+            $query->where('serial', $serial);
         }
+
+        $weathers = $query
+            ->orderByDesc('created_at')
+            ->limit(50)
+            ->get();
+
         return view('weatherdata.index', compact('weathers', 'serials'));
     }
 

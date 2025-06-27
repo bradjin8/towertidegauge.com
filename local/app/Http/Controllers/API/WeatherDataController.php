@@ -30,8 +30,16 @@ class WeatherDataController extends Controller
     // Fetch a tide gauge by _serial
     public function getItemsBySerial($serial)
     {
-        $items = WeatherData::query()->where('serial', $serial)->get()->sortByDesc('created_at')->take(50)->values();
-        return response()->json(['tideGauge' => $items, 'items' => $items]);
+        $items = WeatherData::query()
+            ->where('serial', $serial)
+            ->orderByDesc('created_at')
+            ->limit(50)
+            ->get();
+
+        return response()->json([
+            'tideGauge' => $items,
+            'items' => $items,
+        ]);
     }
 
     public function store(Request $request)
